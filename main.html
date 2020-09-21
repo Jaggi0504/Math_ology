@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+        <title> Math Game </title> 
+    </head>
+        <body>
+            <h2 class= "headingLevel"> Please select the level first!
+                <div class="optionStyle">
+                <select id="level" onchange="actionOnSubmit()" style="align-items:center; text-align:center;">
+                    <option> Start </option>
+                    <option value="17"> EASY </option>
+                    <option value="13"> MEDIUM </option>
+                    <option value="9"> HARD </option>
+                    </select>
+                </div>
+            </h2>
+            
+            <section>
+                <h1> Math Quiz </h1>
+
+
+                <h2 id="demo" style="text-align:left; color:white;"> </h2> <br> <br>
+                <h3 style="color:white; text-align:center;" class="timeStyle"> Time Left: <span id="time"> 0 </span> </h3> <br> <br>
+                <h2 style="color:lawngreen; text-align:center;"> Score: <span id="score"> 0 </span> </h2>  <br>
+
+                <div class="centerdiv">
+                    <div class="insertBox">
+                        <div class="box1">
+                            <input type="text" id="v1">
+                        </div>
+                        <p id="sign"> + </p> 
+                        <div class="box1">
+                            <input type="text" id="v2">
+                        </div>
+                    </div>
+                    <div class="middleBox">
+                        <input type="text" id="answ" placeholder="Answer">
+                    </div>
+                </div>
+                <h2 id="message" style="color:white;"> </h2>
+            </section>
+
+            <script>
+                let isPlaying;
+                let score=0;
+                let Time;
+                let x;
+                let n1;
+                let n2;
+
+                const userans = document.querySelector('#answ');
+                const scores = document.querySelector('#score');
+                const message =  document.querySelector('#message');
+                var mathsign = document.getElementById('sign');
+
+
+                    function showNumbers() {
+                    n1 = Math.floor(Math.random()*100 + 1);
+                    n2 = Math.floor(Math.random()*100 + 1);
+                    mathsign = document.getElementById('sign');
+
+                    const array = ['+', '-', '*'];
+                    const index = Math.floor(Math.random() * array.length);
+                    mathsign.innerHTML = array[index];
+
+                    document.getElementById('v1').value = n1;
+                    document.getElementById('v2').value = n2;
+                }
+
+                function actionOnSubmit() {
+
+                    var x = document.getElementById("level").value;
+                    document.getElementById("demo").innerHTML = "The level you have selected has time limit: " + x + "  seconds";
+                    Time=x;
+                    showNumbers()
+                    setInterval(countdown,1000);
+                    setInterval(checkStatus,1000);
+                    userans.addEventListener('input',startMatch); 
+                }
+
+
+
+                const times = document.querySelector('#time');
+
+                function checkStatus()
+                {
+                    if(!isPlaying && Time===0)
+                    message.innerHTML = "Game Over!!";
+                }
+    
+                function countdown()
+                {
+                    if (Time>0)
+                    Time--;
+                    else if(Time === 0)
+                    {
+                        isPlaying=false;
+                        score = -10;
+                    }
+                    times.innerHTML = Time;
+                }
+
+
+                 function startMatch()
+                {
+                    if(matchAns())
+                    {
+                    Time = document.getElementById("level").value;
+                    userans.value="";
+                    showNumbers()
+                    score= score + 10;
+
+                    
+                    }
+                    if(score===-10)
+                    scores.innerHTML = 0;
+                    else
+                    scores.innerHTML = score;
+                }
+
+                    function matchAns()
+                    {
+                        let ans;
+                        if(mathsign.innerHTML == '+') {
+                            ans = n1 + n2;
+                        } else if(mathsign.innerHTML == '-') {
+                            ans = n1 - n2;
+                        } else if(mathsign.innerHTML == '*') {
+                            ans = n1 * n2;
+                        }
+                        if(userans.value == ans) {
+                            message.innerHTML = "Correct";
+                            return true;
+                        } else {
+                            message.innerHTML = "Incorrect";
+                            return false;
+                        }
+                    }
+
+                
+
+            </script>
+
+
+        </body>
+</html>

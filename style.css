@@ -1,0 +1,127 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+body {
+    background:linear-gradient(to right,purple, slateblue, purple);
+}
+section {
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+section h1 {
+    text-align:center;
+    padding:20px;
+    font-size:32px;
+    text-transform: capitalize;
+    font-size:2rem;
+    text-shadow:1px 1px 2px white;
+    animation:animate 1s linear infinite;
+    animation-direction: alternate;
+    color:"#e81eb9";
+}
+
+@keyframes animate {
+    from {
+        transform: translateX(-20px);
+    }
+    to {
+        transform:translateX(20px);
+    }
+}
+
+.centerdiv {
+    width:500px;
+    height:400px;
+    background:linear-gradient(45deg, slateblue, purple, slateblue);
+    box-shadow: 10px 10px 10px 10px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.insertBox {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100px;
+}
+
+#v1, #v2 {
+    text-align:center;
+    padding:20px 30px;
+    width:35px;
+    font-size:30px;
+    box-shadow:1px 1px 0px #999,
+    2px 2px 0px #999,
+    3px 3px 0px #999,
+    4px 4px 0px #999,
+    5px 5px 0px #999,
+    6px 6px 0px #999;
+}
+
+ p {
+    font-size:60px;
+    margin:0 8px 0 13px;
+}
+
+.middleBox #answ {
+    margin:30px 0;
+    padding:5px 0;
+    font-size:30px;
+    text-align:center;
+    width:180px;
+}
+
+.sentBox button {
+    padding:10px 20px;
+    font-size:.8rem;
+    text-transform: uppercase;
+    color:white;
+    border:none;
+    background-color: #59f013;
+    border-bottom-left-radius:25px;
+    border-bottom-right-radius:25px;
+}
+
+.headingLevel {
+    align-items: center;
+    justify-content: center;
+    margin-left:580px;
+    margin-top:20px;
+    color:#93e80e;
+}
+
+.optionStyle {
+    justify-content: center;
+    align-items: center;
+    margin-top:5px;
+    margin-left:100px;
+    box-sizing: border-box;
+}
+
+.timeStyle {
+    font-size:24px;
+    animation:zoom 8s ease-in-out infinite;
+}
+
+@keyframes zoom {
+    50% {
+        font-size:28px;
+    }
+    75% {
+        font-size:32px;
+        color:#e01b25;
+    }
+    90% {
+        font-size:34px;
+        color:#e01b25;
+    }
+}
